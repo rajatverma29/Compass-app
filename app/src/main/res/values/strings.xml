@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Compass</string>
+    <string name="compass">Compass</string>
+    <string name="compassimg">compassimg</string>
+    <string name="drectional_coordinates"> Coordinates</string>
+    <string name="direction">direction</string>
+    <string name="path">path\n</string>
+    <string name="north_icon">northicon\n</string>
+    <string name="secondary_needle">secondaryneedle</string>
+    <string name="cneedle">cneedle</string>
+    <string name="themeswitch">Switch</string>
+
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="380dp"
+    android:height="380dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+
+    <!-- North (N) Text -->
+    <group
+        android:pivotX="100"
+        android:pivotY="100"
+        android:rotation="0">
+        <path
+            android:pathData="M100,20 L100,30"
+            android:strokeWidth="3"
+            android:strokeColor="@color/red" />
+
+        <!-- Group for positioning and scaling 'N' -->
+
+    </group>
+
+
+
+
+</vector>
