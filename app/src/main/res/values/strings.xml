@@ -9,5 +9,9 @@
     <string name="secondary_needle">secondaryneedle</string>
     <string name="cneedle">cneedle</string>
     <string name="themeswitch">Switch</string>
+    <string name="settings">Settings</string>
+    <string name="back">‹</string>
+    <string name="light">Light</string>
+    <string name="theme">Theme</string>
 
 </resources>

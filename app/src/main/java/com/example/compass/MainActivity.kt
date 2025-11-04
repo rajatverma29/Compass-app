@@ -2,6 +2,7 @@ package com.example.compass
 
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import android.hardware.Sensor
 import android.hardware.SensorEvent
@@ -9,8 +10,8 @@ import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Build
 import android.os.Bundle
-import android.os.Vibrator
 import android.view.View
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -27,7 +28,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
     private lateinit var sensor: Sensor
 
-    private lateinit var vibrator: Vibrator
     private lateinit var sensorManager: SensorManager
     private lateinit var dial: ImageView
     private lateinit var coordinates: TextView
@@ -35,11 +35,13 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     private var degree = 0f
     private lateinit var direction: TextView
     private lateinit var toggle: com.google.android.material.materialswitch.MaterialSwitch
-    private lateinit var sun: ImageView
-    private lateinit var moon: ImageView
+
     private lateinit var layout: View
     private lateinit var name: TextView
     private lateinit var north: ImageView
+
+    private lateinit var settings: ImageButton
+
 
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,59 +61,27 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
 
 
+
+
         coordinates = findViewById(R.id.coordinates)
         sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
         sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION)!!
         direction = findViewById(R.id.direction)
         name = findViewById<TextView>(R.id.name)
-        sun = findViewById(R.id.sun)
-        moon = findViewById(R.id.moon)
+        settings = findViewById<ImageButton>(R.id.settings)
         layout = findViewById<View>(R.id.main)
-        toggle = findViewById(R.id.themeswitch)
         dial = findViewById(R.id.dial)
         needle = findViewById(R.id.needle)
         layout.setBackgroundColor(Color.BLACK)
         direction.setTextColor(Color.WHITE)
         coordinates.setTextColor(Color.WHITE)
         name.setTextColor(Color.WHITE)
-        sun.setColorFilter(Color.YELLOW)
-        moon.setColorFilter(Color.WHITE)
+
         north = findViewById(R.id.north)
-        toggle.isChecked = true
-        val trackDrawable = ContextCompat.getDrawable(this, R.drawable.trackborder)
-        toggle.trackDrawable = trackDrawable
 
 
-        val save = getSharedPreferences("theme", MODE_PRIVATE)
-        val dark = save.getBoolean("dark", true)
-        toggle.isChecked = dark
-
-        if (dark) {
-            darktheme()
-
-        } else {
-            lighttheme()
-
-        }
-
-
-        toggle.setOnCheckedChangeListener { _, isChecked ->
-
-            save.edit {
-                putBoolean("dark", isChecked)
-            }
-
-
-            if (isChecked) {
-                darktheme()
-
-            } else {
-                lighttheme()
-
-
-            }
-
-
+        settings.setOnClickListener {
+            startActivity(Intent(this, Settings::class.java))
         }
 
 
@@ -126,7 +96,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             ObjectAnimator.ofFloat(dial, "rotation", degree, (-coordinatevalue).toFloat())
         val rotateneedle =
             ObjectAnimator.ofFloat(needle, "rotation", degree, (-coordinatevalue).toFloat())
-        val rotatenorth= ObjectAnimator.ofFloat(north, "rotation", degree, (-coordinatevalue).toFloat())
+        val rotatenorth =
+            ObjectAnimator.ofFloat(north, "rotation", degree, (-coordinatevalue).toFloat())
 
         rotatedial.duration = 300
         rotateneedle.duration = 300
@@ -173,6 +144,16 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         super.onResume()
         sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_GAME)
 
+
+        var themepref = getSharedPreferences("theme", MODE_PRIVATE)
+        var dark = themepref.getBoolean("dark", true)
+        if (dark) {
+            darktheme()
+        } else {
+            lighttheme()
+
+        }
+
     }
 
     override fun onPause() {
@@ -185,10 +166,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         direction.setTextColor(Color.WHITE)
         coordinates.setTextColor(Color.WHITE)
         name.setTextColor(Color.WHITE)
-        sun.setColorFilter(Color.YELLOW)
-        moon.setColorFilter(Color.WHITE)
+        settings.setColorFilter(Color.WHITE)
         dial.setColorFilter(Color.WHITE)
-
 
 
     }
@@ -198,10 +177,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         direction.setTextColor(Color.BLACK)
         coordinates.setTextColor(Color.BLACK)
         name.setTextColor(Color.BLACK)
-        sun.setColorFilter(Color.BLACK)
-        moon.setColorFilter(Color.BLUE)
+        settings.setColorFilter(Color.BLACK)
         dial.setColorFilter(Color.BLACK)
-
 
 
     }

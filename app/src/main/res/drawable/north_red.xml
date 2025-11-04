@@ -7,7 +7,7 @@
 
     <!-- North (N) Text -->
     <group
-        android:pivotX="100"
+        android:pivotX="200"
         android:pivotY="100"
         android:rotation="0">
         <path
