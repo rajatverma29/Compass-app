@@ -29,6 +29,8 @@ A modern Android Compass application built using Kotlin and XML with real-time o
 
 ## APK Download
 
+[Download Apk 👉] (https://github.com/rajatverma29/Compass-app/releases)
+
 ## Author
 
 Rajat Verma
