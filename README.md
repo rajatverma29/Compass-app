@@ -18,26 +18,16 @@ A modern Android Compass application built using Kotlin and XML with real-time o
 * SVG Assets
 
 ## Screenshots
-
-
-
-
-
-
-## Installation
 <img width="1200" height="2670" alt="Compass Light mode" src="https://github.com/user-attachments/assets/c05fae7f-5a40-4ac2-bfa7-d654f8d1f36d" />
 <img width="1200" height="2670" alt="Compass Dark Mode" src="https://github.com/user-attachments/assets/052e2b0d-e366-4b47-a10f-36243cbf702b" />
 <img width="1200" height="2670" alt="Settings Sreen light mode" src="https://github.com/user-attachments/assets/ef50c6dd-cda9-4d27-83d1-20b62ada419a" />
 <img width="1200" height="2670" alt="Settings Screen- dark mode" src="https://github.com/user-attachments/assets/f01861f6-a2d5-44f0-addb-fc18aa73eba6" />
 
 
-1. Clone the repository
-2. Open the project in Android Studio
-3. Sync Gradle and run the app
+
+
 
 ## APK Download
-
-*Add APK release link here.*
 
 ## Author
 
